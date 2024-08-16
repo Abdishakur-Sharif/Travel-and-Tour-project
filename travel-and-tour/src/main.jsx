@@ -1,3 +1,4 @@
+import React from 'react';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -11,7 +12,7 @@ import { AuthContextProvider } from './context/authContext.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <Router>
+      <Router basename="/Travel-and-Tour-project">
         <AuthContextProvider>
         <App />
         </AuthContextProvider>
