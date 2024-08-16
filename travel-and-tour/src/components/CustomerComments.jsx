@@ -25,151 +25,73 @@ function StarIcon() {
   );
 }
 
-function CustomerComments(){
-    const [rated, setRated] = React.useState(4)
-    return (
-        
-         <Card color="transparent" shadow={false} className="w-full max-w-[26rem] ml-28 ">
-             <div className="text-center ml-10 mt-12">
-      <h1 className="text-4xl mb-14 text-purple-800">What Our Travelers Are Saying</h1>
-     <p>1000+ Reviews on Tripadvisor. Certificate of Excellence</p>
-    </div>
+function CustomerComments() {
+  const [rated, setRated] = React.useState(4);
 
-     <div className="flex items-center gap-2 font-bold text-blue-gray-500 mb-10 ml-20 mt-11">
-      {rated}.7
-      <Rating value={4} onChange={(value) => setRated(value)} />
-      <Typography color="blue-gray" className="font-medium text-blue-gray-500">
-        Based on 134 Reviews
-      </Typography>
+  return (
+    <Card color="transparent" shadow={false} className="w-full max-w-4xl mx-auto p-4 lg:p-8">
+      <div className="text-center mt-12 mb-8">
+        <h1 className="text-2xl lg:text-4xl mb-4 text-purple-800">
+          What Our Travelers Are Saying
+        </h1>
+        <p className="text-sm lg:text-base">
+          1000+ Reviews on Tripadvisor. Certificate of Excellence
+        </p>
       </div>
 
-   <div className="flex w-full justify-between gap-20">
-  <div className="flex-grow bg-white p-4 rounded-lg shadow">
-    <CardHeader
-      color="transparent"
-      floated={false}
-      shadow={false}
-      className="mx-0 flex items-center gap-4 pt-0 pb-8"
-    >
-      <Avatar
-        size="lg"
-        variant="circular"
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-        alt="tania andrew"
-      />
-      <div className="flex w-full flex-col gap-0.5 min-w-0">
-        <div className="flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="truncate">
-            Tania Andrew
-          </Typography>
-          <div className="flex items-center gap-0">
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-          </div>
-        </div>
-        <Typography color="blue-gray" className="truncate">
-          Frontend Lead @ Google
+      <div className="flex items-center gap-2 font-bold text-blue-gray-500 mb-8 justify-center">
+        {rated}.7
+        <Rating value={4} onChange={(value) => setRated(value)} />
+        <Typography color="blue-gray" className="font-medium text-sm lg:text-base">
+          Based on 134 Reviews
         </Typography>
       </div>
-    </CardHeader>
-    <CardBody className="mb-6 p-0">
-      <Typography>
-        &quot;I found solution to all my design needs from Creative Tim. I use
-        them as a freelancer in my hobby projects for fun! And its really
-        affordable, very humble guys !!!&quot;
-      </Typography>
-    </CardBody>
-  </div>
 
-  <div className="flex-grow bg-white p-4 rounded-lg shadow">
-    <CardHeader
-      color="transparent"
-      floated={false}
-      shadow={false}
-      className="mx-0 flex items-center gap-4 pt-0 pb-8"
-    >
-      <Avatar
-        size="lg"
-        variant="circular"
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-        alt="tania andrew"
-      />
-      <div className="flex w-full flex-col gap-0.5 min-w-0">
-        <div className="flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="truncate">
-            Tania Andrew
-          </Typography>
-          <div className="flex items-center gap-0">
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
+      <div className="flex flex-col lg:flex-row w-full justify-between gap-6 lg:gap-12">
+        {[1, 2, 3].map((item, index) => (
+          <div key={index} className="flex-grow bg-white p-4 rounded-lg shadow">
+            <CardHeader
+              color="transparent"
+              floated={false}
+              shadow={false}
+              className="mx-0 flex items-center gap-4 pt-0 pb-8"
+            >
+              <Avatar
+                size="lg"
+                variant="circular"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                alt="tania andrew"
+              />
+              <div className="flex w-full flex-col gap-0.5 min-w-0">
+                <div className="flex items-center justify-between">
+                  <Typography variant="h5" color="blue-gray" className="truncate">
+                    Tania Andrew
+                  </Typography>
+                  <div className="flex items-center gap-0">
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                  </div>
+                </div>
+                <Typography color="blue-gray" className="truncate">
+                  Frontend Lead @ Google
+                </Typography>
+              </div>
+            </CardHeader>
+            <CardBody className="mb-6 p-0">
+              <Typography className="text-sm lg:text-base">
+                &quot;I found solution to all my design needs from Creative Tim. I use
+                them as a freelancer in my hobby projects for fun! And its really
+                affordable, very humble guys !!!&quot;
+              </Typography>
+            </CardBody>
           </div>
-        </div>
-        <Typography color="blue-gray" className="truncate">
-          Frontend Lead @ Google
-        </Typography>
+        ))}
       </div>
-    </CardHeader>
-    <CardBody className="mb-6 p-0">
-      <Typography>
-        &quot;I found solution to all my design needs from Creative Tim. I use
-        them as a freelancer in my hobby projects for fun! And its really
-        affordable, very humble guys !!!&quot;
-      </Typography>
-    </CardBody>
-  </div>
-
-   <div className="flex-grow bg-white p-4 rounded-lg shadow">
-    <CardHeader
-      color="transparent"
-      floated={false}
-      shadow={false}
-      className="mx-0 flex items-center gap-4 pt-0 pb-8"
-    >
-      <Avatar
-        size="lg"
-        variant="circular"
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-        alt="tania andrew"
-      />
-      <div className="flex w-full flex-col gap-0.5 min-w-0">
-        <div className="flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className="truncate">
-            Tania Andrew
-          </Typography>
-          <div className="flex items-center gap-0">
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-          </div>
-        </div>
-        <Typography color="blue-gray" className="truncate">
-          Frontend Lead @ Google
-        </Typography>
-      </div>
-    </CardHeader>
-    <CardBody className="mb-6 p-0">
-      <Typography>
-        &quot;I found solution to all my design needs from Creative Tim. I use
-        them as a freelancer in my hobby projects for fun! And its really
-        affordable, very humble guys !!!&quot;
-      </Typography>
-    </CardBody>
-  </div>
-</div>
-
-
     </Card>
   );
-    
-  
 }
 
-export default CustomerComments
+export default CustomerComments;

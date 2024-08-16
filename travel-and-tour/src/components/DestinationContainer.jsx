@@ -1,27 +1,23 @@
 import React from 'react';
-import DestinationCard from './DestinationCard';
-import Search from './Search';
 import HomeNav from './HomeNav';
 import Masonry from './Masonry';
 import CustomerComments from './CustomerComments';
 import CountryWeatherInfo from './CountryWeatherInfo';
+import useCountryWeather from '../context/useCountryWeather'
 
+function DestinationContainer() {
+  const { weather, countryInfo, error } = useCountryWeather('Germany'); // Example country
 
-function DestinationContainer(prop){
-    return(
-        <>
-        <HomeNav />
-        <Search/>
-        <div>
-      <CountryWeatherInfo country="Germany" />
-      <CountryWeatherInfo country="Japan" />
-    </div>
-        {/* <DestinationCard /> */}
-        <Masonry/>
-        <CustomerComments />
-        </>
-    )
+  return (
+    <>
+      <HomeNav />
+      <div>
+        <CountryWeatherInfo countryInfo={countryInfo} weather={weather} error={error} />
+      </div>
+      <Masonry />
+      <CustomerComments />
+    </>
+  );
 }
-
 
 export default DestinationContainer;

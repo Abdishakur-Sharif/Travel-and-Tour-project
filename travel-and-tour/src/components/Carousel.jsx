@@ -1,9 +1,11 @@
 import { Carousel } from "@material-tailwind/react";
- 
+
 export function CarouselTransition() {
   return (
-    
-    <Carousel transition={{ duration: 2 }} className="rounded-xl h-screen w-[900px] ml-64">
+    <Carousel
+      transition={{ duration: 2 }}
+      className="rounded-xl h-screen w-full md:w-[900px] md:ml-32 lg:ml-64"
+    >
       <img
         src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dHJhdmVsfGVufDB8fDB8fHww"
         alt="image 1"

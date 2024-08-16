@@ -1,43 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FaTemperatureHigh, FaWind, FaCloudSun } from 'react-icons/fa';
 
-const CountryWeatherInfo = ({ country }) => {
-  const [weather, setWeather] = useState(null);
-  const [countryInfo, setCountryInfo] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchCountryInfo = async () => {
-      try {
-        const countryResponse = await fetch(`https://restcountries.com/v3.1/name/${country}`);
-        if (!countryResponse.ok) {
-          throw new Error('Country not found');
-        }
-        const countryData = await countryResponse.json();
-        setCountryInfo(countryData[0]);
-
-        const capitalCity = countryData[0]?.capital?.[0];
-
-        if (!capitalCity) {
-          throw new Error('Capital city not found');
-        }
-
-        const weatherResponse = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${capitalCity}&appid=9b5cc4aa57df9a1a72de33526c58e9c1`
-        );
-        if (!weatherResponse.ok) {
-          throw new Error('Weather information not found');
-        }
-        const weatherData = await weatherResponse.json();
-        setWeather(weatherData);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
-    fetchCountryInfo();
-  }, [country]);
-
+const CountryWeatherInfo = ({ countryInfo, weather, error }) => {
   if (error) return <p style={styles.error}>{error}</p>;
   if (!countryInfo || !weather) return <p style={styles.loading}>Loading...</p>;
 
@@ -72,9 +36,9 @@ const CountryWeatherInfo = ({ country }) => {
 
 const styles = {
   container: {
-    maxWidth: '700px',
+    maxWidth: '90%',
     margin: '40px auto',
-    padding: '30px',
+    padding: '20px',
     background: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)',
     borderRadius: '20px',
     boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
@@ -82,41 +46,53 @@ const styles = {
     fontFamily: "'Poppins', sans-serif",
     textAlign: 'center',
     animation: 'fadeIn 1s ease-in-out',
+    transition: 'padding 0.5s ease',
   },
   heading: {
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     marginBottom: '20px',
     borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
     paddingBottom: '10px',
     fontWeight: '700',
+    transition: 'font-size 0.5s ease',
   },
   infoSection: {
-    marginBottom: '30px',
-    fontSize: '1.2rem',
+    marginBottom: '20px',
+    fontSize: '1rem',
+    transition: 'font-size 0.5s ease',
   },
   subHeading: {
-    fontSize: '2.2rem',
+    fontSize: '2rem',
     marginBottom: '20px',
     color: 'rgba(255, 255, 255, 0.9)',
     textTransform: 'uppercase',
     letterSpacing: '1.5px',
+    transition: 'font-size 0.5s ease',
   },
   weatherSection: {
     display: 'flex',
-    justifyContent: 'space-around',
-    fontSize: '1.1rem',
+    flexDirection: 'column',
+    alignItems: 'center',
+    fontSize: '1rem',
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    padding: '20px',
+    padding: '15px',
     borderRadius: '15px',
+    transition: 'padding 0.5s ease',
   },
   weatherItem: {
     display: 'flex',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: '300px',
+    marginBottom: '15px',
+    transition: 'flex-direction 0.5s ease, margin-bottom 0.5s ease',
   },
   icon: {
-    fontSize: '2.5rem',
-    marginBottom: '10px',
+    fontSize: '2rem',
+    marginRight: '10px',
+    transition: 'font-size 0.5s ease',
   },
   error: {
     color: 'white',
@@ -130,10 +106,38 @@ const styles = {
   },
   loading: {
     color: 'white',
-    fontSize: '1.8rem',
+    fontSize: '1.5rem',
     textAlign: 'center',
+  },
+  '@media(min-width: 768px)': {
+    container: {
+      maxWidth: '700px',
+      padding: '30px',
+    },
+    heading: {
+      fontSize: '3rem',
+    },
+    infoSection: {
+      fontSize: '1.2rem',
+    },
+    subHeading: {
+      fontSize: '2.2rem',
+    },
+    weatherSection: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+    },
+    weatherItem: {
+      flexDirection: 'column',
+      marginBottom: '0',
+    },
+    icon: {
+      fontSize: '2.5rem',
+    },
   },
 };
 
 export default CountryWeatherInfo;
+
+
 
